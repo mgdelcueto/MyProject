@@ -1,0 +1,27 @@
+@model IEnumerable<MyProject.Models.Periods>
+@{
+    ViewData["Title"] = "Periods Index Page";
+}
+
+<h1>@ViewData["Title"]</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Number</th>
+        <th>Name</th>        
+        <th>Delete</th>
+        <th>Edit</th>
+        <th>Detail</th>
+    </tr>
+    @foreach (var p in Model) {
+        <tr>
+            <td>@p.PerId</td>
+            <td>@p.PerNum</td>
+            <td>@p.PerNam</td>
+            <td>@Html.ActionLink("Delete", "Delete", new { id = p.PerId })</td>
+            <td>@Html.ActionLink("Edit", "Edit", new { id = p.PerId })</td>
+            <td>@Html.ActionLink("Detail", "ShowDetail", new { id = p.PerId })</td>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Add a New Item", "Create")

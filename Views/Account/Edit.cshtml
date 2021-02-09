@@ -1,0 +1,62 @@
+@using MyProject.Models
+@model TAccount
+
+<h1>Edit Product</h1>
+@using (Html.BeginForm()) {
+    @Html.HiddenFor(p => p.AccId)
+    @Html.HiddenFor(p => p.AccItem)
+    <!--@Html.HiddenFor(p => p.AccDesc)-->    
+    @Html.HiddenFor(p => p.AccOrder)
+    @Html.HiddenFor(p => p.AccYear)
+    @Html.HiddenFor(p => p.AccMonth)
+    <table>
+    <tr>
+        <td><label for="AccYear">Year</label></td>
+        <td><label for="AccDesc">Description</label></td>     
+    </tr>
+    <tr>
+        <td>@Html.DisplayFor(p => p.AccYear)</td>
+        <td>@Html.TextBoxFor(p => p.AccDesc)</td>
+    </tr>
+    <tr>
+        <td><label for="AccBud01">Enero</label></td>
+        <td><label for="AccBud02">Febrero</label></td>     
+        <td><label for="AccBud03">Marzo</label></td>
+        <td><label for="AccBud04">Abril</label></td>                
+    </tr>
+    <tr>
+        <td>@Html.TextBoxFor(p => p.AccBud01)</td>
+        <td>@Html.TextBoxFor(p => p.AccBud02)</td>
+        <td>@Html.TextBoxFor(p => p.AccBud03)</td>
+        <td>@Html.TextBoxFor(p => p.AccBud04)</td>
+
+    </tr>    
+    <tr>
+        <td><label for="AccBud01">Mayo</label></td>
+        <td><label for="AccBud02">Junio</label></td>     
+        <td><label for="AccBud03">Julio</label></td>
+        <td><label for="AccBud04">Agosto</label></td>    
+    </tr>
+    <tr>
+        <td>@Html.TextBoxFor(p => p.AccBud05)</td>
+        <td>@Html.TextBoxFor(p => p.AccBud06)</td>
+        <td>@Html.TextBoxFor(p => p.AccBud07)</td>
+        <td>@Html.TextBoxFor(p => p.AccBud08)</td>
+    </tr>
+    <tr>
+        <td><label for="AccBud01">Septiembre</label></td>
+        <td><label for="AccBud02">Octubre</label></td>     
+        <td><label for="AccBud03">Noviembre</label></td>
+        <td><label for="AccBud04">Diciembre</label></td>    
+    </tr>    
+    <tr>
+        <td>@Html.TextBoxFor(p => p.AccBud09)</td>
+        <td>@Html.TextBoxFor(p => p.AccBud10)</td>
+        <td>@Html.TextBoxFor(p => p.AccBud11)</td>
+        <td>@Html.TextBoxFor(p => p.AccBud12)</td>
+    </tr>    
+    <tr>
+       <td><input type="submit" value="Update" /></td>
+     </tr>
+    </table>
+}

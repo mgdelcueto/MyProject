@@ -1,0 +1,117 @@
+@using System.Globalization
+@model IEnumerable<MyProject.Models.TAccount>
+@functions {
+string myformat(double? value){
+    string ret =string.Format("{0:N2}", value);
+    //string rets = value.ToString("N", CultureInfo.InvariantCulture);
+    return ret;
+}
+    string mycolor(double? value,int item){
+    string retcol="red-number";
+    if (item==0)
+    {
+        retcol="botred-number";
+        if (value >=0 ){retcol="botblue-number";}
+    }
+    else{if (value >=0 ){retcol="blue-number";}}
+    return retcol;
+    }
+    string colcolor(int item){
+    string retcol="col-text";
+    if (item==0)
+    {
+        retcol="botcol-text";
+    }
+    return retcol;
+    }
+}
+@section Styles
+{
+    <style>
+        .head-text {color: #BBBBBB;
+        background-color: #222222;
+        text-align: left;
+        }
+    </style>
+    <style>
+        .col-text {color: #888888;
+        background-color: #000000;
+        text-align: right;
+        }
+    </style>
+    <style>
+        .botcol-text {color: #2222EE;
+        background-color: #222222;
+        text-align: right;
+        }
+    </style>    
+    <style>
+        .red-number {color: #DD0000;        
+        background-color: #000000;
+        text-align: right;
+        }
+
+    </style>    <style>
+       .blue-number {color: #999999;        
+        background-color: #000000;
+        text-align: right;
+        }
+    </style>
+    <style>
+        .botred-number {color: #DD0000;        
+        background-color: #222222;
+        text-align: right;
+        }
+
+    </style>
+    <style>
+       .botblue-number {color: #999999;        
+        background-color: #222222;
+        text-align: right;
+        }
+    </style>
+
+}
+
+<h1>@ViewData["Title"]</h1>
+<table border="1">
+    <tr>
+        <!--<th>ID</th>-->
+        <th class="head-text">Description</th>
+        <th class="head-text">Enero</th>
+        <th class="head-text">Febrero</th>
+        <th class="head-text">Marzo</th>
+        <th class="head-text">Abril</th>
+        <th class="head-text">Mayo</th>
+        <th class="head-text">Junio</th>
+        <th class="head-text">Julio</th>
+        <th class="head-text">Agosto</th>
+        <th class="head-text">Septiembre</th>
+        <th class="head-text">Octubre</th>
+        <th class="head-text">Noviembre</th>
+        <th class="head-text">Diciembre</th>
+        <th class="head-text">Edit</th>
+    </tr>
+    @foreach (var p in Model) {
+        <tr>
+            <!--<td>@p.AccId</td>-->
+            <td class =@colcolor(p.AccItem)>@p.AccDesc</td>
+            <td class=@mycolor(p.AccBud01,p.AccItem)>@myformat(@p.AccBud01)</td>
+            <td class=@mycolor(p.AccBud02,p.AccItem)>@myformat(@p.AccBud02)</td>
+            <td class=@mycolor(p.AccBud03,p.AccItem)>@myformat(@p.AccBud03)</td>
+            <td class=@mycolor(p.AccBud04,p.AccItem)>@myformat(@p.AccBud04)</td>
+            <td class=@mycolor(p.AccBud05,p.AccItem)>@myformat(@p.AccBud05)</td>  
+            <td class=@mycolor(p.AccBud06,p.AccItem)>@myformat(@p.AccBud06)</td>
+            <td class=@mycolor(p.AccBud07,p.AccItem)>@myformat(@p.AccBud07)</td>
+            <td class=@mycolor(p.AccBud08,p.AccItem)>@myformat(@p.AccBud08)</td>
+            <td class=@mycolor(p.AccBud09,p.AccItem)>@myformat(@p.AccBud09)</td>
+            <td class=@mycolor(p.AccBud10,p.AccItem)>@myformat(@p.AccBud10)</td>
+            <td class=@mycolor(p.AccBud11,p.AccItem)>@myformat(@p.AccBud11)</td>
+            <td class=@mycolor(p.AccBud12,p.AccItem)>@myformat(@p.AccBud12)</td>
+            <!--<td>@Html.ActionLink("Delete", "Delete", new { id = p.AccId })</td>-->
+            <td class ="col-text">@Html.ActionLink("Edit", "Edit", new { id = p.AccId })</td>
+            <!--<td>@Html.ActionLink("Detail", "ShowDetail", new { id = p.AccId })</td>-->
+        </tr>
+    }
+</table>
+<!--@Html.ActionLink("Add a New Item", "Create")-->

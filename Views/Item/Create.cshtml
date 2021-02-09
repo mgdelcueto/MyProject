@@ -1,0 +1,38 @@
+@using MyProject.Models
+@model Item
+
+<h1>Add a New Product</h1>
+@using (Html.BeginForm()) {
+    <table>
+        <tr>
+            <td>@Html.LabelFor(p => p.ItemOrder)</td>
+            <td>@Html.TextBoxFor(p => p.ItemOrder)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(p => p.ItemMonth)</td>
+            <td>
+                @Html.DropDownListFor(p => p.ItemMonth,
+               new SelectList(DataSource.GetPeriods(), "PerNum", "PerNam"))
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(p => p.ItemYearM)</td>
+            <td>
+                @Html.DropDownListFor(p => p.ItemYearM,
+               new SelectList(DataSource.GetMonths(), "MoNum", "MoNam"))
+            </td>
+        </tr>      
+        <tr>
+            <td>@Html.LabelFor(p => p.ItemDesc)</td>
+            <td>@Html.TextBoxFor(p => p.ItemDesc)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(p => p.ItemBudget)</td>
+            <td>@Html.TextBoxFor(p => p.ItemBudget)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Add" /></td>
+        </tr>
+    </table>
+}

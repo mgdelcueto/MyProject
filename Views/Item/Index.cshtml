@@ -1,0 +1,108 @@
+@model IEnumerable<MyProject.Models.ItemView>
+@{
+    ViewData["Title"] = "Item Index Page";
+}
+@functions {
+    string myformat(double? value){
+    string ret =string.Format("{0:C2}", value);
+    //string rets = value.ToString("N", CultureInfo.InvariantCulture);
+    return ret;
+}
+    string mycolor(double? value){
+    string retcol="red-number";
+    if (value >=0 ){
+        retcol="blue-number";}
+    return retcol;
+    }
+    string colcolor(int item){
+    string retcol="col-text";
+    if (item==0)
+    {
+        retcol="botcol-text";
+    }
+    return retcol;
+    }
+}
+@section Styles
+{
+    <style>
+        .head-text {color: #DDDDDD;
+        background-color: #000000;
+        text-align: left;
+        }
+    </style>
+    <style>
+        .col-text {color: #888888;
+        background-color: #000000;
+        text-align: right;
+        }
+    </style>
+    <style>
+        .norm-text {color: #CCCCCC;
+        background-color: #000000;
+        text-align: right;
+        }
+    </style>
+    <style>
+        .botcol-text {color: #2222EE;
+        background-color: #222222;
+        text-align: right;
+        }
+    </style>    
+    <style>
+        .red-number {color: #DD0000;        
+        background-color: #000000;
+        text-align: right;
+        }
+
+    </style>    <style>
+       .blue-number {color: #999999;        
+        background-color: #000000;
+        text-align: right;
+        }
+    </style>
+    <style>
+        .botred-number {color: #DD0000;        
+        background-color: #222222;
+        text-align: right;
+        }
+
+    </style>
+    <style>
+       .botblue-number {color: #999999;        
+        background-color: #222222;
+        text-align: right;
+        }
+    </style>
+
+}
+
+<h1>@ViewData["Title"]</h1>
+<table border="1">
+    <tr>
+        <!--<th>ID</th>-->
+        <!--<th>Order List</th>-->
+        <th class="head-text">Description</th>        
+        <th class="head-text">Periodicity</th>        
+        <th class="head-text">Yearly Month</th>
+        <th class="head-text">Budget</th>
+        <th class="head-text">Delete</th>
+        <th class="head-text">Edit</th>
+        <!--<th>Detail</th>-->
+    </tr>
+    @foreach (var p in Model) {
+        <tr>
+            <!--<td>@p.ItemId</td>-->
+            <!--<td>@p.ItemOrder</td>-->
+            <td class ="col-text">@p.ItemDesc</td>            
+            <td class ="norm-text">@p.ItemMoNam</td>
+            <td class ="norm-text">@p.ItemYMNam</td>            
+            <td class=@mycolor(p.ItemBudget)>@myformat(@p.ItemBudget)</td>
+            <!--<td>@Html.ActionLink("Delete", "Delete", new { id = p.ItemId })</td>-->
+            <td class="col-text">@Html.ActionLink("Delete", "Delete", new { id = p.ItemId }, new { onclick="return confirm('Are you sure?');"})</td>
+            <td class="col-text">@Html.ActionLink("Edit", "Edit", new { id = p.ItemId })</td>
+            <!--<td>@Html.ActionLink("Detail", "ShowDetail", new { id = p.ItemId })</td>-->
+        </tr>
+    }
+</table>
+@Html.ActionLink("Add a New Item", "Create")

@@ -1,0 +1,42 @@
+@using MyProject.Models
+@model Item
+
+<h1>Edit Product</h1>
+@using (Html.BeginForm()) {
+    @Html.HiddenFor(p => p.ItemId)
+    <table>
+    <tr>
+        <td>@Html.DisplayNameFor(p => p.ItemId)</td>
+        <td>@Html.DisplayFor(p => p.ItemId)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(p => p.ItemOrder)</td>
+        <td>@Html.TextBoxFor(p => p.ItemOrder)</td>
+    </tr>
+        <tr>
+            <td>@Html.LabelFor(p => p.ItemMonth)</td>
+            <td>
+                @Html.DropDownListFor(p => p.ItemMonth,
+               new SelectList(DataSource.GetPeriods(), "PerNum", "PerNam"))
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(p => p.ItemYearM)</td>
+            <td>
+                @Html.DropDownListFor(p => p.ItemYearM,
+               new SelectList(DataSource.GetMonths(), "MoNum", "MoNam"))
+            </td>
+        </tr>    
+    <tr>
+        <td>@Html.DisplayNameFor(p => p.ItemDesc)</td>
+        <td>@Html.TextBoxFor(p => p.ItemDesc)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(p => p.ItemBudget)</td>
+        <td>@Html.TextBoxFor(p => p.ItemBudget)</td>
+    </tr>
+    <tr>
+       <td><input type="submit" value="Update" /></td>
+     </tr>
+    </table>
+}
